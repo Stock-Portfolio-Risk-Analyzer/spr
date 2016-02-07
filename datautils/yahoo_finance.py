@@ -2,19 +2,20 @@ import ystockquote
 import pandas as pd
 import logbook
 import unittest
-import pandas_datareader as datareader
+import pandas_datareader.data as web
 from collections import OrderedDict
 from datetime import datetime as dt
 
 log = logbook.Logger('yahoo_finance')
 
 
-def get_stock_data_yahoo(symbols=None, start_date=None, end_date=None):
+def get_stock_data(symbol, start_date=None, end_date=None):
     """
-    :param symbols: list of symbols
+    Get stock data from Yahoo Finance for a single stock
+    :param symbol: string
     :param start_date: datetime
     :param end_date: datetime
-    :return: OrderedDict of DataFrames of stock data from start_date to end_date
+    :return: DataFrame of stock data from start_date to end_date
     """
     if start_date is None:
         start_date = dt(year=1990, month=1, day=1)
@@ -25,12 +26,24 @@ def get_stock_data_yahoo(symbols=None, start_date=None, end_date=None):
     if start_date is not None and end_date is not None:
         assert start_date < end_date, "Start date is later than end date."
 
+    log.info("Loading symbol: {}".format(symbol))
+    symbol_data = web.DataReader(symbol, 'yahoo', start_date, end_date)
+
+    return symbol_data
+
+def get_stock_data_multiple(symbols=None, start_date=None, end_date=None):
+    """
+    Get stock data from Yahoo Finance for multiple stocks
+    :param symbols: list of symbols (strings)
+    :param start_date: datetime
+    :param end_date: datetime
+    :return: OrderedDict of DataFrames of stock data from start_date to end_date
+    """
     data = OrderedDict()
 
     if symbols is not None:
         for symbol in symbols:
-            log.info("Loading symbol: {}".format(symbol))
-            symbol_data = datareader(symbol, 'yahoo', start_date, end_date)
+            symbol_data = get_stock_data(symbol, start_date, end_date)
             data[symbol] = symbol_data
 
     return data
