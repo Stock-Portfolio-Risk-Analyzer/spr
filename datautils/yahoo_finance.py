@@ -11,7 +11,7 @@ log = logbook.Logger('yahoo_finance')
 
 def get_stock_data(symbol, start_date=None, end_date=None):
     """
-    Get stock data from Yahoo Finance for a single stock
+    Get OHLC stock data from Yahoo Finance for a single stock
     :param symbol: string
     :param start_date: datetime
     :param end_date: datetime
@@ -33,7 +33,7 @@ def get_stock_data(symbol, start_date=None, end_date=None):
 
 def get_stock_data_multiple(symbols=None, start_date=None, end_date=None):
     """
-    Get stock data from Yahoo Finance for multiple stocks
+    Get OHLC stock data from Yahoo Finance for multiple stocks
     :param symbols: list of symbols (strings)
     :param start_date: datetime
     :param end_date: datetime
@@ -47,6 +47,14 @@ def get_stock_data_multiple(symbols=None, start_date=None, end_date=None):
             data[symbol] = symbol_data
 
     return data
+
+def get_pct_returns(symbol, start_date=None, end_date=None):
+    data = get_stock_data(symbol, start_date, end_date)['Adj Close']
+    return data.pct_change().fillna(0)
+
+def get_returns(symbol, start_date=None, end_date=None):
+    data = get_stock_data(symbol, start_date, end_date)['Adj Close']
+    return data.diff().fillna(0)
 
 
 def get_options_data_yahoo(symbols=None, start_date=None, end_date=None):
