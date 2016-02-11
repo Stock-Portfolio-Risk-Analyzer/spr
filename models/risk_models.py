@@ -38,7 +38,6 @@ def get_beta(symbol, start_date=dt(year=2013, month=1, day=1), end_date=dt.today
 
     return beta
 
-
 def get_volatility(symbol, start_date=dt(year=2013, month=1, day=1), end_date=dt.today(), index_symbol='^GSPC'):
     """
     Standard deviation of returns

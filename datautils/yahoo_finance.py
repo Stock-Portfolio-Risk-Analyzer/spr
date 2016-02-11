@@ -48,13 +48,31 @@ def get_stock_data_multiple(symbols=None, start_date=None, end_date=None):
 
     return data
 
-def get_pct_returns(symbol, start_date=None, end_date=None):
-    data = get_stock_data(symbol, start_date, end_date)['Adj Close']
+def get_pct_returns(symbol, start_date=None, end_date=None, col='Adj Close'):
+    """
+
+    :param symbol:
+    :param start_date:
+    :param end_date:
+    :param col: (string) name of column to calculate the pct returns from
+    :return:
+    """
+    data = get_stock_data(symbol, start_date, end_date)[col]
     return data.pct_change().fillna(0)
 
-def get_returns(symbol, start_date=None, end_date=None):
-    data = get_stock_data(symbol, start_date, end_date)['Adj Close']
+def get_returns(symbol, start_date=None, end_date=None, col='Adj Close'):
+    """
+
+    :param symbol:
+    :param start_date:
+    :param end_date:
+    :param col:  (string) name of column to calculate the returns from
+    :return:
+    """
+    data = get_stock_data(symbol, start_date, end_date)[col]
     return data.diff().fillna(0)
+
+
 
 
 def get_options_data_yahoo(symbols=None, start_date=None, end_date=None):
