@@ -73,8 +73,6 @@ def get_returns(symbol, start_date=None, end_date=None, col='Adj Close'):
     return data.diff().fillna(0)
 
 
-
-
 def get_options_data_yahoo(symbols=None, start_date=None, end_date=None):
     raise NotImplementedError("")
 
