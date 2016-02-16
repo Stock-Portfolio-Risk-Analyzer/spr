@@ -2,7 +2,8 @@ import Quandl as qd
 import logbook
 from collections import OrderedDict
 from datetime import datetime as dt
-
+import pandas
+import time
 
 log = logbook.Logger('quandl_info')
 
@@ -24,7 +25,7 @@ def get_stock_data(symbol, start_date=None, end_date=None, db_code="WIKI"):
 
     log.info("Loading symbol: {}".format(symbol))
 
-    quandl_code = database_code + "/" + symbol
+    quandl_code = db_code + "/" + symbol
     symbol_data = qd.get(quandl_code, returns="pandas", 
                          trim_start=start_date, trim_end=end_date) 
     return symbol_data
@@ -48,9 +49,37 @@ def get_stock_data_multiple(symbols=None, start_date=None, end_date=None, db_cod
 
     return data
 
+def get_pct_returns(symbol, start_date=None, end_date=None, col='Adj. Close'):
+    """
 
-symbols = ["GOOG", "AAPL"]
+    :param symbol:
+    :param start_date:
+    :param end_date:
+    :param col: (string) name of column to calculate the pct returns from
+    :return:
+    """
+    data = get_stock_data(symbol, start_date, end_date)[col]
+
+    return data.pct_change().fillna(0)
+
+def get_returns(symbol, start_date=None, end_date=None, col='Adj. Close'):
+    """
+
+    :param symbol:
+    :param start_date:
+    :param end_date:
+    :param col:  (string) name of column to calculate the returns from
+    :return:
+    """
+    data = get_stock_data(symbol, start_date, end_date)[col]
+    return data.diff().fillna(0)
+
+
+#For development purposes?
+def get_options_data_quandl(symbol=None):
+    return list(get_stock_data(symbol).columns.values)
+
+symbols = "GOOG";
 start_date = dt(year=2015, month=1, day=1)
 end_date = dt(year=2015, month=12, day=31)
-print get_stock_data_multiple(symbols, start_date, end_date)
-
+print get_options_data_quandl(symbols)
