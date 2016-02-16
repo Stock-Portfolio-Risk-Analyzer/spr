@@ -72,7 +72,6 @@ def get_returns(symbol, start_date=None, end_date=None, col='Adj Close'):
     data = get_stock_data(symbol, start_date, end_date)[col]
     return data.diff().fillna(0)
 
-
 def get_options_data_yahoo(symbols=None, start_date=None, end_date=None):
     raise NotImplementedError("")
 
