@@ -86,9 +86,3 @@ def get_options_data_quandl(symbol=None):
     """
     return list(get_stock_data(symbol).columns.values)
 
-if __name__ == "__main__":
-    symbols = "GOOG"
-    start_date = dt(year=2015, month=1, day=5)
-    end_date = dt(year=2015, month=1, day=6)
-    l = get_stock_data(symbols, start_date, end_date)
-    print l
