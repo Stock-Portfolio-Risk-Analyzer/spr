@@ -12,8 +12,14 @@ qd.get("NSE/OIL", authtoken="-v_zAsM8GfM8UNnAr6sZ")
 
 def get_stock_data(symbol, start_date=None, end_date=None, db_code="WIKI"):
     """
-    blah blah
+    Get OHLC stock data from Quandl for a single stock
+    :param symbol: string
+    :param start_date: datetime
+    :param end_date: datetime
+    :param db_code: Quandl database code
+    :return: DataFrame of stock data from start_date to end_date
     """
+
     if start_date is None:
         start_date = dt(year=1990, month=1, day=1)
 
@@ -36,6 +42,7 @@ def get_stock_data_multiple(symbols=None, start_date=None, end_date=None, db_cod
     :param symbols: list of symbols (strings)
     :param start_date: datetime
     :param end_date: datetime
+    :param db_code: Quandl database code. 
     :return: OrderedDict of DataFrames of stock data from start_date to end_date
     """
     data = OrderedDict()
@@ -51,7 +58,6 @@ def get_stock_data_multiple(symbols=None, start_date=None, end_date=None, db_cod
 
 def get_pct_returns(symbol, start_date=None, end_date=None, col='Adj. Close'):
     """
-
     :param symbol:
     :param start_date:
     :param end_date:
@@ -64,7 +70,6 @@ def get_pct_returns(symbol, start_date=None, end_date=None, col='Adj. Close'):
 
 def get_returns(symbol, start_date=None, end_date=None, col='Adj. Close'):
     """
-
     :param symbol:
     :param start_date:
     :param end_date:
@@ -74,13 +79,16 @@ def get_returns(symbol, start_date=None, end_date=None, col='Adj. Close'):
     data = get_stock_data(symbol, start_date, end_date)[col]
     return data.diff().fillna(0)
 
-
-#For development purposes?
 def get_options_data_quandl(symbol=None):
+    """
+    :param symbol: ticker symbol
+    :return: list of column names 
+    """
     return list(get_stock_data(symbol).columns.values)
 
 if __name__ == "__main__":
     symbols = "GOOG"
-    start_date = dt(year=2015, month=1, day=1)
-    end_date = dt(year=2015, month=12, day=31)
-    print get_options_data_quandl(symbols)
+    start_date = dt(year=2015, month=1, day=5)
+    end_date = dt(year=2015, month=1, day=6)
+    l = get_stock_data(symbols, start_date, end_date)
+    print l
