@@ -2,8 +2,8 @@ import ystockquote
 import pandas as pd
 import logbook
 import unittest
-import pandas_datareader.data as web
 from collections import OrderedDict
+import pandas_datareader.data as web
 from datetime import datetime as dt
 
 log = logbook.Logger('yahoo_finance')
@@ -77,7 +77,9 @@ def get_options_data_yahoo(symbols=None, start_date=None, end_date=None):
 
 def get_current_price(symbol):
     return float(ystockquote.get_price(symbol))
-
+def get_company_name(symbol):
+    print str(ystockquote.get_all(symbol))
+ 
 
 class TestYahooFinance(unittest.TestCase):
 
