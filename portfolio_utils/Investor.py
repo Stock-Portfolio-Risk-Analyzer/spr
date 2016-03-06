@@ -1,13 +1,7 @@
-'''
-Created on Mar 2, 2016
-
-@author: laurynas
-'''
-
 class Investor(object):
-    portfolio_list = []
 
     def __init__(self, username):
+        self.portfolio_list = []
         self.username = username
         
     def get_username(self):
