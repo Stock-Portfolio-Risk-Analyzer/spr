@@ -10,8 +10,6 @@ class Portfolio(object):
     def __init__(self, investor):
         self.investor = investor.get_username()
         self.id = str(self.investor) + "_" + str(id(self))
-    def get_id(self):
-        return self.id
     
     def set_total_value(self):
         self.total_value = self.compute_total_value()
