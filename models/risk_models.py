@@ -56,7 +56,6 @@ def get_volatility(symbol, start_date=dt(year=2013, month=1, day=1), end_date=dt
 
     volatility = np.sqrt(cov_mat[0, 0])
 
-    # TODO: is this right?
     return volatility*100
 
 if __name__ == "__main__":
