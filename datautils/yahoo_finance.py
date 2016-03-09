@@ -1,13 +1,12 @@
+import unittest
+import logbook
 import ystockquote
 import pandas as pd
-import logbook
-import unittest
-from collections import OrderedDict
 import pandas_datareader.data as web
 from datetime import datetime as dt
+from collections import OrderedDict
 
 log = logbook.Logger('yahoo_finance')
-
 
 def get_stock_data(symbol, start_date=None, end_date=None):
     """
@@ -79,16 +78,28 @@ def get_current_price(symbol):
     return float(ystockquote.get_price(symbol))
 
 def get_company_name(symbol):
-    print str(ystockquote.get_all(symbol))
- 
+    """
+    Get the full name of the company by the symbol
+    :param symbol:
+    :return:
+    """
+    df = pd.read_csv('secwiki_tickers.csv')
+    company_info = df[df.Ticker==symbol]
+    code = company_info['Name'].keys()[0]
+    company_name = company_info.to_dict()['Name'][code]
+    return company_name
 
-class TestYahooFinance(unittest.TestCase):
-
-    def test_get_current_price(self):
-        symbol = 'GOOG'
-        current_price = get_current_price(symbol)
-        self.assertTrue(type(current_price) is float)
-        self.assertGreaterEqual(current_price, 400)
+def get_company_sector(symbol):
+    """
+    Get the sector of the company
+    :param symbol: (str)
+    :return: (str)
+    """
+    df = pd.read_csv('secwiki_tickers.csv')
+    company_info = df[df.Ticker==symbol]
+    code = company_info['Name'].keys()[0]
+    company_sector = company_info.to_dict()['Sector'][code]
+    return company_sector
 
 if __name__ == "__main__":
     unittest.main()
