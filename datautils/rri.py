@@ -5,6 +5,7 @@ import yahoo_finance
 """
 API that computes Relative Risk Index for a given Stock or Portfolio
 Author - Shivam Gupta (sgupta40@illinois.edu)
+	 	 Rohan Kapoor (rkapoor6@illinois.edu)
 """
 
 def compute_daily_change_for_past_given_days(symbol, number_of_days_back):
