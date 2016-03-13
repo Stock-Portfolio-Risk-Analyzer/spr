@@ -11,9 +11,9 @@ Author - Shivam Gupta (sgupta40@illinois.edu)
 def compute_daily_change_for_past_given_days(symbol, number_of_days_back):
 	""" 
 		Parameter:	symbol -> ticker symbol of the stock (Type -> String)
-					number_of_days_back -> number of days back from today 
-										   for which you want the daily change 
-										   (Type -> integer)
+				number_of_days_back -> number of days back from today 
+							for which you want the daily change 
+							(Type -> integer)
 		return: list of daily change (Type -> list float)
 	"""
 	start_date = date.today() - timedelta(days=number_of_days_back)
@@ -30,7 +30,7 @@ def compute_daily_change_for_past_given_days(symbol, number_of_days_back):
 def compute_daily_change_for_range(symbol, start_date, end_date):
 	""" 
 		Parameter:	symbol -> ticker symbol of the stock (Type -> String)
-					start_date, end_date -> range you want to compute on (Type -> String)		
+				start_date, end_date -> range you want to compute on (Type -> String)		
 
 		return: list of daily change (Type -> list float)
 	"""
@@ -69,9 +69,9 @@ def compute_variance(a):
 def compute_stock_rri_for_today(symbol, number_of_days_back):
 	"""
 		Parameter:	symbol -> ticker symbol of the stock (Type -> String)
-					number_of_days_back -> number of days back from today 
-										   for which you want rri
-										   (Type -> integer)
+				number_of_days_back -> 	number of days back from today 
+							for which you want rri
+							(Type -> integer)
 
 		return: float
 	"""
@@ -86,7 +86,7 @@ def compute_stock_rri_for_today(symbol, number_of_days_back):
 def compute_stock_rri_for_range(symbol, start_date, end_date):
 	"""
 		Parameter:	symbol -> ticker symbol of the stock (Type -> String)
-					start_date, end_date -> range you want to compute rri on (Type -> String)
+				start_date, end_date -> range you want to compute rri on (Type -> String)
 		return: float
 	"""
 	stock_daily_change  = compute_daily_change_for_range(symbol, start_date, end_date)
@@ -101,10 +101,10 @@ def compute_portfolio_rri_for_today(stock_list, quantity_list, number_of_days_ba
 	"""
 	Computes RRI for a portfolio
 	Parameter:	stock_list -> list of stock tickers
-				quantity_list -> quantity of stocks per ticker
-				number_of_days_back -> number of days back from today 
-										   for which you want rri
-										   (Type -> integer)
+			quantity_list -> quantity of stocks per ticker
+			number_of_days_back -> 	number of days back from today 
+						for which you want rri
+						(Type -> integer)
 	Return: float
 	"""
 	total_rri = 0.0
@@ -122,8 +122,8 @@ def compute_portfolio_rri_for_range(stock_list, quantity_list, start_date, end_d
 	"""
 	Computes RRI for a portfolio
 	Parameter:	stock_list -> list of stock tickers
-				quantity_list -> quantity of stocks per ticker
-				start_date, end_date -> range you want to compute rri on (Type -> String)
+			quantity_list -> quantity of stocks per ticker
+			start_date, end_date -> range you want to compute rri on (Type -> String)
 	Return: float
 	"""
 	total_rri = 0.0
