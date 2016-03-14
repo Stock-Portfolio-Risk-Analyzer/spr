@@ -11,7 +11,7 @@ Author: Shivam Gupta (sgupta40@illinois.edu)
 class TestRRI(unittest.TestCase):
 
     def test_compute_portfolio_rri_for_range1(self):
-        """ Tests the compute_portfolio_rri_for_range function"""
+        """ Tests the compute_portfolio_rri_for_range function """
     	stock_list = ["AAPL", "NFLX", "FB"]
     	quantity_list = [10, 10, 10]
     	start_date = "03/03/2016"
@@ -20,6 +20,7 @@ class TestRRI(unittest.TestCase):
     	self.assertEqual(rri, 1.48118245233)
 
     def test_compute_portfolio_rri_for_range2(self):
+        """ Tests the compute_portfolio_rri_for_range function when quantity is zero"""
     	stock_list = ["AAPL", "NFLX", "FB"]
     	quantity_list = [0, 0, 0]
     	start_date = "03/03/2016"
