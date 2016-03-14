@@ -2,6 +2,12 @@ import unittest
 from datetime import datetime as dt
 from datautils.rri import *
 
+"""
+Test methods in rri.py
+Author: Shivam Gupta (sgupta40@illinois.edu)
+        Rohan Kapoor (rkapoor6@illinois.edu)
+"""
+
 class TestRRI(unittest.TestCase):
 
     def test_compute_portfolio_rri_for_range1(self):
