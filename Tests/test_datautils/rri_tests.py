@@ -29,6 +29,7 @@ class TestRRI(unittest.TestCase):
     	self.assertEqual(rri, nan) #TODO: <type 'numpy.float64'> mai nan kaise likhe?
 
     def test_compute_stock_rri_for_range(self):
+        """ Tests the compute_stock_rri_for_range function """
     	symbol = "AAPL"
     	start_date = "03/03/2016"
     	end_date = "03/13/2016"
