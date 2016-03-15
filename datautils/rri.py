@@ -10,11 +10,11 @@ Author - Shivam Gupta (sgupta40@illinois.edu)
 
 def compute_daily_change_for_past_given_days(symbol, number_of_days_back):
 	""" 
-		Parameter:	symbol -> ticker symbol of the stock (Type -> String)
-				number_of_days_back -> number of days back from today 
-							for which you want the daily change 
-							(Type -> integer)
-		return: list of daily change (Type -> list float)
+	Parameter:	symbol -> ticker symbol of the stock (Type -> String)
+			number_of_days_back -> number of days back from today 
+						for which you want the daily change 
+						(Type -> integer)
+	return: list of daily change (Type -> list float)
 	"""
 	start_date = date.today() - timedelta(days=number_of_days_back)
 	end_date = date.today()
