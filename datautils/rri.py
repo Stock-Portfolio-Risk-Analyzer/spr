@@ -44,7 +44,8 @@ def compute_daily_change_for_range(symbol, start_date, end_date):
 	return daily_change
 
 def compute_covariance(a, b):
-	"""	Computes covariance
+	"""	
+		Computes covariance
 		Parameter: Two lists of integers/floats
 		Return: float 
 	"""
@@ -85,9 +86,9 @@ def compute_stock_rri_for_today(symbol, number_of_days_back):
 
 def compute_stock_rri_for_range(symbol, start_date, end_date):
 	"""
-		Parameter:	symbol -> ticker symbol of the stock (Type -> String)
-				start_date, end_date -> range you want to compute rri on (Type -> String)
-		return: float
+	Parameter:	symbol -> ticker symbol of the stock (Type -> String)
+			start_date, end_date -> range you want to compute rri on (Type -> String)
+	return: float
 	"""
 	stock_daily_change  = compute_daily_change_for_range(symbol, start_date, end_date)
 	index_daily_change  = compute_daily_change_for_range("NYA", start_date, end_date)
