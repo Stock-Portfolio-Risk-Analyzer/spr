@@ -29,10 +29,10 @@ def compute_daily_change_for_past_given_days(symbol, number_of_days_back):
 
 def compute_daily_change_for_range(symbol, start_date, end_date):
 	""" 
-		Parameter:	symbol -> ticker symbol of the stock (Type -> String)
-				start_date, end_date -> range you want to compute on (Type -> String)		
+	Parameter:	symbol -> ticker symbol of the stock (Type -> String)
+			start_date, end_date -> range you want to compute on (Type -> String)		
 
-		return: list of daily change (Type -> list float)
+	return: list of daily change (Type -> list float)
 	"""
 	symbol_data = yahoo_finance.get_stock_data(symbol, start_date, end_date)
 	closing_price = list(symbol_data["Close"])
@@ -45,9 +45,9 @@ def compute_daily_change_for_range(symbol, start_date, end_date):
 
 def compute_covariance(a, b):
 	"""	
-		Computes covariance
-		Parameter: Two lists of integers/floats
-		Return: float 
+	Computes covariance
+	Parameter: Two lists of integers/floats
+	Return: float 
 	"""
 	a_mean = sum(a)/len(a)
 	b_mean = sum(b)/len(b)
@@ -61,20 +61,20 @@ def compute_covariance(a, b):
 
 def compute_variance(a):
 	"""
-		Computes Variance
-		Parameter: List of integers/floats
-		Return: float
+	Computes Variance
+	Parameter: List of integers/floats
+	Return: float
 	"""
 	return np.var(a)
 
 def compute_stock_rri_for_today(symbol, number_of_days_back):
 	"""
-		Parameter:	symbol -> ticker symbol of the stock (Type -> String)
-				number_of_days_back -> 	number of days back from today 
-							for which you want rri
-							(Type -> integer)
+	Parameter:	symbol -> ticker symbol of the stock (Type -> String)
+			number_of_days_back -> 	number of days back from today 
+						for which you want rri
+						(Type -> integer)
 
-		return: float
+	return: float
 	"""
 	stock_daily_change  = compute_daily_change_for_past_given_days(symbol, number_of_days_back)
 	index_daily_change  = compute_daily_change_for_past_given_days("NYA", number_of_days_back)
