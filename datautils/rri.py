@@ -49,15 +49,15 @@ def compute_covariance(a, b):
 	Parameter: Two lists of integers/floats
 	Return: float 
 	"""
-	a_mean = sum(a)/len(a)
-	b_mean = sum(b)/len(b)
+	a_mean = (sum(a)/len(a))
+	b_mean = (sum(b)/len(b))
 
 	total = 0
 
 	for i in range(0, len(a)):
 	    total += ((a[i] - a_mean) * (b[i] - b_mean))
 
-	return total/(len(a)-1)
+	return (total/(len(a)-1))
 
 def compute_variance(a):
 	"""
